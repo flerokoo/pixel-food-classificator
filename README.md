@@ -10,7 +10,7 @@ In Bob's world there are three types of food: burgers, fries and pepsi.
 
 Images of food for training and testing are generated with help of Pillow library in `image_generator.py` script. 
 
-Neural network was trained on datasets consisting of 10-200 32x32 images with 0-10 epochs. Results are on the following plot:
+Neural network was trained on datasets consisting of 10-200 32x32 images with 1-10 epochs. Results are on the following plot:
 
 ![Percentage of correct answers](https://raw.githubusercontent.com/flerokoo/pixel-food-classificator/master/pics/plots.png)
 
