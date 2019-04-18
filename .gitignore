@@ -1,7 +1,7 @@
 testset
 trainset
 weights.npy
-
+.vscode
 
 
 # Created by https://www.gitignore.io/api/python
