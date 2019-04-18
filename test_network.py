@@ -17,8 +17,9 @@ def run_test(dataset, weights):
 
 if __name__ == "__main__":    
     image_generator.generate_set(TESTSET_PATH, options.test_set_elements, force_overwrite=False)
-
     weights = np.load("weights.npy")
     testset = get_dataset(TESTSET_PATH, image_to_data_converter=options.default_converter)
+    percentage = run_test(testset, weights)
+    print(percentage)
     
     
