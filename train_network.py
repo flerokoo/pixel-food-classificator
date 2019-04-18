@@ -43,8 +43,8 @@ def get_train_dataset():
 
 
 if __name__ == "__main__":    
-    weights = train(dataset, options.learning_rate)
     dataset = get_train_dataset()
+    weights = train(dataset, options.learning_rate)
 
     for i in range(options.epochs):
         print("epoch {}".format(i))

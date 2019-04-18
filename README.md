@@ -1,6 +1,6 @@
 # Pixel Food Classificator
 
-## Machine Learning Project
+## Machine Learning Learning Project
 
 __Goal of the project__: teach neural network Bob to recognize different types of food from drawings without using any ML-related third party libraries.
 
