@@ -138,11 +138,11 @@ def generate_cola(output, size=IMAGE_SIZE):
 
 
 def generate_set(dirname, n=50, force_overwrite=False):
-    print("generating set \"{}\"".format(dirname))
+    # print("generating set \"{}\"".format(dirname))
     base_path = "./{}/".format(dirname)
 
     if (os.path.exists(base_path) and not force_overwrite):
-        print("set already generated")
+        # print("set already generated")
         return
 
     for i in range(n):

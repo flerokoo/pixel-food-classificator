@@ -2,6 +2,7 @@ from scipy import misc
 import os
 import numpy as np
 import cv2
+import shutil
 
 BURGER = 0
 FRIES = 1
@@ -44,7 +45,7 @@ def normalize(a, max=255):
     return np.array([i/max for i in a])
 
 def get_dataset(dataset_path, image_to_data_converter):
-    print("reading dataset \"{}\"".format(dataset_path))
+    # print("reading dataset \"{}\"".format(dataset_path))
     labels = get_labels(dataset_path)
     ret = []       
 
@@ -78,6 +79,8 @@ def to_channel_arrays(image):
         normalize(extractChannel(image, 2))
     )
     
+def cleanup(path):
+    shutil.rmtree(path, ignore_errors=True)
 
 
 ###################### CONVERTERS ##########################

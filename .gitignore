@@ -1,5 +1,7 @@
 testset
 trainset
+eva_train_set
+eva_test_set
 weights.npy
 .vscode
 

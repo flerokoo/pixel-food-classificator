@@ -9,7 +9,7 @@ import options
 
 DATASET_PATH = "trainset"
 
-def train(dataset, learning_rate, num_variants=3):
+def train(dataset, learning_rate, weights=None, num_variants=3):
     """
     Shape of dataset: [{id, label, filepath, image},...]
     """        
@@ -17,9 +17,12 @@ def train(dataset, learning_rate, num_variants=3):
         raise "error: empty dataset given"
 
     weights_shape = (len(dataset[0]["data"]), num_variants)
-    weights = np.random.random(weights_shape)
+
+    if weights is None:
+        weights = np.random.random(weights_shape)
+    
     for (i, el) in enumerate(dataset):
-        print("Processing image {}: {}".format(i, el["filename"]))
+        # print("Processing image {}: {}".format(i, el["filename"]))
         id = el["id"]
         data = el["data"]
         prediction = predict(data, weights)
@@ -29,12 +32,23 @@ def train(dataset, learning_rate, num_variants=3):
 
     return weights
 
+def gen_dataset_from_options():
+    image_generator.generate_set(DATASET_PATH, options.train_set_elements, force_overwrite=False)
+    
 
-image_generator.generate_set(DATASET_PATH, options.train_set_elements, force_overwrite=False)
+def get_train_dataset():
+    return get_dataset(DATASET_PATH, image_to_data_converter=options.default_converter )
+    
 
-dataset = get_dataset(DATASET_PATH, image_to_data_converter=options.default_converter )
 
-weights = train(dataset, learning_rate=options.learning_rate)
 
-np.save("weights", weights)
-print(weights)
+if __name__ == "__main__":    
+    weights = train(dataset, options.learning_rate)
+    dataset = get_train_dataset()
+
+    for i in range(options.epochs):
+        print("epoch {}".format(i))
+        weights = train(dataset, options.learning_rate, weights)
+
+    np.save("weights", weights)
+    print(weights)

@@ -9,11 +9,14 @@ default_converter = utils.zip_converter
 image_size = 32
 
 # number of images to generate for training 
-train_set_elements = 500
+train_set_elements = 100
+
+# how many times NN should be trained on generated training set
+epochs=10
 
 # number of images to generate for evaluating 
 # correctness of predictions
-test_set_elements = 50
+test_set_elements = 100
 
 # self explanatory
 learning_rate = 0.01
