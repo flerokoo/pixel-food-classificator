@@ -100,3 +100,7 @@ def zip_converter(image):
     zipped = zipped.flatten()
     return zipped
     
+def avg_converter(image):
+    (red, green, blue) = to_channel_arrays(image)    
+    grayscale = (red + green + blue)/3
+    return grayscale

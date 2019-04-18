@@ -4,7 +4,8 @@ import numpy as np
 import cv2
 import image_generator
 from utils import get_dataset, predict, id_to_vector, zip_converter, \
-    concat_converter, grayscale_converter
+    concat_converter, grayscale_converter, channel_converter, avg_converter
+import options
 
 DATASET_PATH = "trainset"
 
@@ -23,17 +24,17 @@ def train(dataset, learning_rate, num_variants=3):
         data = el["data"]
         prediction = predict(data, weights)
         err = id_to_vector(id) - prediction
-        dweights = 0.005 * err * np.reshape(data, (weights_shape[0], 1))  # TODO play with learning rate
+        dweights = learning_rate * err * np.reshape(data, (weights_shape[0], 1))  # TODO play with learning rate
         weights = weights + dweights
 
     return weights
 
 
-image_generator.generate_set(DATASET_PATH, 500, force_overwrite=False)
+image_generator.generate_set(DATASET_PATH, options.train_set_elements, force_overwrite=False)
 
-dataset = get_dataset(DATASET_PATH, image_to_data_converter=zip_converter)
+dataset = get_dataset(DATASET_PATH, image_to_data_converter=options.default_converter )
 
-weights = train(dataset, learning_rate=0.005)
+weights = train(dataset, learning_rate=options.learning_rate)
 
 np.save("weights", weights)
 print(weights)

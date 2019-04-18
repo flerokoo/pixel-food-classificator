@@ -2,9 +2,9 @@ from PIL import Image, ImageDraw
 import os
 import random
 import math
+import options
 
-
-IMAGE_SIZE = 32
+IMAGE_SIZE = options.image_size
 CRUST_COLOR = (214, 144, 40)
 PATTY_COLOR = (114, 45, 8)
 LETTUCE_COLOR = (170, 221, 0)
