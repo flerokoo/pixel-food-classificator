@@ -15,7 +15,7 @@ Neural network trained on a dataset of 500 32x32 images is showing following res
 | Format of input data  | Percentage of correct predictions, %  |  
 |---|---|
 | Grayscale = 0.2126R + 0.7152G + 0.0722B | 42-48  |
-| [R0, G0, B0, ... R1024, G1024, B1024] | 66-68 |
+| Zip = [R0, G0, B0, ... R1024, G1024, B1024] | 66-68 |
 | Avg = (R + G + B)/3 | 33-34 |
 
 
@@ -23,8 +23,13 @@ Neural network trained on a dataset of 500 32x32 images is showing following res
 
 ## Usage
 
+Generate images and train NN
 ```
 python train_network.py
+```
+
+Generate more images and test NN on 'em
+```
 python test_network.py
 ```
 
