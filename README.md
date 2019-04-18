@@ -10,9 +10,26 @@ In Bob's world there are three types of food: burgers, fries and pepsi.
 
 Images of food for training and testing are generated with help of Pillow library in `image_generator.py` script. 
 
-Neural network was trained on datasets consisting of 10-200 32x32 images with 1-10 epochs. Results are on the following plot:
+Neural network was trained on datasets consisting of 10-200 32x32 images with 1-10 epochs. Results are on the plots.
 
-![Percentage of correct answers](https://raw.githubusercontent.com/flerokoo/pixel-food-classificator/master/pics/plots.png)
+### Zipped channels
+Images was piped into neural network in following format:
+```
+data = [R0, G0, B0, ... Ri, Gi, Bi, ... R1024, G1024, B1024]
+```
+
+![Zipped channels](https://raw.githubusercontent.com/flerokoo/pixel-food-classificator/master/pics/plots.png)
+
+### Grayscale
+Here images was converted to grayscale mode
+```
+Gi = 0.2126Ri + 0.7152Gi + 0.0722Bi
+data = [G0, ... Gi, ... GN]
+```
+
+![Zipped channels](https://raw.githubusercontent.com/flerokoo/pixel-food-classificator/master/pics/plots_grayscale.png)
+
+For some reason grayscale-network does its job better than zip-network when both are trained on small sets. On big sets zip-network classifies with almost 100% probability when grayscale-networks tops out at ~96%.
 
 
 ## Usage

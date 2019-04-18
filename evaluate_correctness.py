@@ -6,9 +6,11 @@ import image_generator
 import numpy as np
 
 
+
 if __name__ == "__main__":
     num_epochs = 10
-    for dataset_size in range(100, 500, 100):
+    sizes = [10, 40, 100]
+    for dataset_size in sizes:
         # training NN with num_epochs and dataset_size params
         cleanup("eva_train_set")
         image_generator.generate_set("eva_train_set", dataset_size)
